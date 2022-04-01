@@ -1,3 +1,4 @@
+const DATABASE_URL = process.env.DATABASE_URL || 'postgres://postgres:12345678@localhost:5432/music';
 const DB_NAME = process.env.DB_NAME || 'music';
 const DB_PASSWORD = process.env.DB_PASSWORD || '12345678';
 const DB_HOST = process.env.DB_HOST || 'localhost';
@@ -11,5 +12,6 @@ module.exports = {
     DB_PASSWORD,
     DB_HOST,
     DB_PORT,
-    DB_USER
+    DB_USER,
+    DATABASE_URL
 };
