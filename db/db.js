@@ -1,9 +1,9 @@
-// import {DB} from "./const.js";
-
+const constants = require('../const.js');
 const Sequelize = require('sequelize');
 
 // Or you can simply use a connection uri
-const sequelize = new Sequelize('postgres://postgres:12345678@localhost:5432/music');
+module.exports = new Sequelize(constants.DB);
+/*
 sequelize
     .authenticate()
     .then(() => {
@@ -12,3 +12,5 @@ sequelize
     .catch(err => {
         console.error('Unable to connect to the database:', err);
     });
+
+*/
