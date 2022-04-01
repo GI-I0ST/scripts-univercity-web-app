@@ -1,6 +1,8 @@
 const constants = require('../const.js');
 const Sequelize = require('sequelize');
 
+console.log("env log", process.env.DB_USER);
+console.log("constants log", constants.DB_USER);
 // Or you can simply use a connection uri
 //module.exports = new Sequelize(constants.DB);
 module.exports = new Sequelize({
