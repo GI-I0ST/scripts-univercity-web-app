@@ -23,13 +23,13 @@ module.exports = new Sequelize({
 });
 */
 
-sequelize = new Sequelize(constants.DATABASE_URL + '?sslmode=require', {
+sequelize = new Sequelize(constants.DATABASE_URL, {
     dialect:  'postgres',
     protocol: 'postgres',
     logging:  true, //false,
     dialectOptions: {
         ssl: {
-            // require: true, // This will help you. But you will see nwe error
+            require: true, // This will help you. But you will see nwe error
             rejectUnauthorized: false // This line will fix new error
         }
     },
