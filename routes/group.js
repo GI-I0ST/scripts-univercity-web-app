@@ -9,14 +9,14 @@ router.use(function timeLog(req, res, next) {
 });
 
 router.get('/', function (req, res) {
-    let findedGroups;
+    let foundGroups;
     if (req.query.id) {
-        findedGroups = groupModel.getById(req.query.id);
+        foundGroups = groupModel.getById(req.query.id);
     } else {
-        findedGroups = groupModel.getAll();
+        foundGroups = groupModel.getAll();
     }
 
-    findedGroups.then((data) => {
+    foundGroups.then((data) => {
         console.log('send', data);
         res.send(data);
     }).catch(err => {

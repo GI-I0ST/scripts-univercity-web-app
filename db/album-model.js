@@ -34,6 +34,18 @@ function getAll() {
     });
 }
 
+function getById(id) {
+    return Albums.findByPk(id).then((data) => {
+        return data;
+    });
+}
+
+function getByGroupId(groupId) {
+    return Albums.findAll({where:{"groupId": groupId}}).then(function (data) {
+        return data;
+    });
+}
+
 function create(album) {
     return Albums.create({
         name: album.name,
@@ -71,6 +83,8 @@ function destroy(id) {
 
 module.exports = {
     getAll,
+    getById,
+    getByGroupId,
     create,
     edit,
     destroy
