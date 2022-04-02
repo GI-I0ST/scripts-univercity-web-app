@@ -23,6 +23,12 @@ function getAll() {
     });
 }
 
+function getById(id) {
+    return Groups.findByPk(id).then((data) => {
+        return data;
+    });
+}
+
 function create(groupName) {
     return Groups.create({name: groupName}).then(function (group) {
         return group.get({
@@ -54,5 +60,6 @@ module.exports = {
     getAll,
     create,
     edit,
-    destroy
+    destroy,
+    getById
 };

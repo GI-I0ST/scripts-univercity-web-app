@@ -8,31 +8,36 @@ router.use(function timeLog(req, res, next) {
     next();
 });
 
-// define the home page route
-router.get('/', function(req, res) {
-    groupModel.getAll().then((data)=> {
+router.get('/', function (req, res) {
+    let findedGroups;
+    if (req.query.id) {
+        findedGroups = groupModel.getById(req.query.id);
+    } else {
+        findedGroups = groupModel.getAll();
+    }
+
+    findedGroups.then((data) => {
         console.log('send', data);
         res.send(data);
-    }).catch(err=>{
+    }).catch(err => {
         res.status(404).send('');
     });
-
 });
 
 router.post('/', function (req, res) {
-    groupModel.create(req.body.name).then(newData=>{
+    groupModel.create(req.body.name).then(newData => {
         res.send(newData);
     });
 });
 
-router.put('/', function(req, res) {
-    groupModel.edit(req.body).then(newData=>{
+router.put('/', function (req, res) {
+    groupModel.edit(req.body).then(newData => {
         res.send(newData);
     });
 });
 
-router.delete('/', function(req, res) {
-    groupModel.destroy(req.body.id).then(newData=>{
+router.delete('/', function (req, res) {
+    groupModel.destroy(req.body.id).then(newData => {
         console.log(newData);
         res.sendStatus(newData ? 200 : 400)
     }).catch((err) => {
