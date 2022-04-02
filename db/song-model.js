@@ -28,6 +28,18 @@ function getAll() {
     });
 }
 
+function getById(id) {
+    return Songs.findByPk(id).then(function (data) {
+        return data;
+    });
+}
+
+function getByAlbumId(albumId) {
+    return Songs.findAll({where: {"albumId": albumId}}).then(function (data) {
+        return data;
+    });
+}
+
 function create(song) {
     return Songs.create({
         name: song.name,
@@ -61,6 +73,8 @@ function destroy(id) {
 
 module.exports = {
     getAll,
+    getById,
+    getByAlbumId,
     create,
     edit,
     destroy

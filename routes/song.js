@@ -10,7 +10,16 @@ router.use(function timeLog(req, res, next) {
 
 // define the home page route
 router.get('/', function (req, res) {
-    songModel.getAll().then((data) => {
+    let foundSongs;
+    if (req.query.id){
+        foundSongs = songModel.getById(req.query.id);
+    } else if (req.query.albumId) {
+        foundSongs = songModel.getByAlbumId(req.query.albumId);
+    } else {
+        foundSongs = songModel.getAll();
+    }
+
+    foundSongs.then((data) => {
         console.log('send', data);
         res.send(data);
     }).catch(err => {
